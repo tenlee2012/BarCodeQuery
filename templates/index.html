@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>首页</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://apps.bdimg.com/libs/highlight.js/9.1.0/styles/default.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+
+        .starter-template {
+            padding: 40px 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">条码信息获取</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <div class="row">
+            <div class="col-md-4">&nbsp;</div>
+            <div class="col-md-4">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="barcode" name="barcode" placeholder="输入条形码">
+                    </div>
+                    <button type="submit" class="btn btn-primary">查询</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-4">&nbsp;</div>
+            <div class="col-md-4">
+                <pre style="display: none;"><code style="display: none;">>
+{
+  "name":"haha",
+  "age":12
+}
+                </code></pre>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col-md-4">&nbsp;</div>
+            <div class="col-md-4">
+                <h3>请求API参数示例</h3>
+                <b><p>/api/good/06917878036526<p></b>
+                <h3>返回参数</h3>
+                <img src="https://oss.aliyuncs.com/netmarket/product/61c51116-2106-4c33-9caf-81bde6e802f7.png">
+            </div>
+        </div>
+
+    </div>
+
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>
+    $("form").submit(function (event) {
+        event.preventDefault();
+        var barcode = $("#barcode").val();
+        if (barcode) {
+            $.get("/api/good/" + barcode, function (data) {
+                $("code").html(JSON.stringify(data, null, 4));
+                $("pre").show();
+                $("code").show();
+                $('pre code').each(function (i, block) {
+                    console.log('asf');
+                    hljs.highlightBlock(block);
+                });
+            });
+        }
+    });
+</script>
+</body>
+</html>
