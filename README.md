@@ -7,3 +7,8 @@
 1. `pip install -r requirements.txt`
 2. `python app.py`
 3. 进入 http://localhost:5000 即可测试API
+
+
+-- 
+本项目部署在[leancloud](http://leancloud.cn),地址为
+[tenlee.leanapp.cn](http://tenlee.leanapp.cn/)
