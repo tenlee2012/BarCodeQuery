@@ -3,6 +3,7 @@
 
 ### 安装&运行：
 > 环境： `macOS 10.12 + Python 3.6 + request 2.13 + Flask 0.12`
+
 1. `pip install -r requirements.txt`
 2. `python app.py`
 3. 进入 http://localhost:5000 即可测试API
