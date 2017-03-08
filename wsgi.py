@@ -21,6 +21,7 @@ leancloud.init(APP_ID, app_key=APP_KEY, master_key=MASTER_KEY)
 leancloud.use_master_key(False)
 
 application = engine
+application = leancloud.HttpsRedirectMiddleware(application)
 
 
 if __name__ == '__main__':
